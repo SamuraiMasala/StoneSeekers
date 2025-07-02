@@ -1,4 +1,4 @@
-{
+{ "homepage": "https://johnsmith.github.io/stone-seekers",
   "devDependencies": {
     "gh-pages": "^6.3.0"
   },
