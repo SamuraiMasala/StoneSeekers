@@ -20,7 +20,7 @@
   }
 }
 {
-  "homepage": "https://SamuraiMasala.github.io//StoneSeekers",
+  "homepage": "https://SamuraiMasala.github.io/StoneSeekers",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
