@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Stone Seeker User Scenario.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Stone Seeker User Scenario" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="F770E42B-9723-4973-A76E-3FDC1CD6D9DB" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Cinzel');
+<tw-storydata name="Stone Seeker User Scenario" startnode="7" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="F770E42B-9723-4973-A76E-3FDC1CD6D9DB" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Cinzel');
 
 /* default background */
 tw-story {
@@ -71,6 +71,30 @@ tw-passage {
   margin-right: auto;
   width: 336px;
   height: 192px;
+}
+
+.persona {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.mineral {
+  display: block;              /* インライン画像をブロックに */
+  margin-left: auto;           /* 左右のマージンを自動に */
+  margin-right: auto;
+  width: 50%;
+}
+
+.portrait {
+  display: block;              /* インライン画像をブロックに */
+  margin-left: auto;           /* 左右のマージンを自動に */
+  margin-right: auto;
+  width: 75%;
 }
 
 .kiosk-wrapper {
@@ -149,6 +173,45 @@ tw-passage {
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   transform: translateY(1px);     /* 押し込まれたような動き */
 }
+
+/* modals */
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 70%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name=" Start: Select Persona" tags="start whitebg" position="875,225" size="100,100">[Welcome to //**STONE SEEKERS**// – a personalized interactive experience inside the **Mineralogical Collection &quot;Luigi Bombicci Museum&quot;**, Bologna.
 
 This Twine simulates the museum’s digital installation, where visitors explore their personal connection to minerals through an interactive journey.
@@ -164,41 +227,25 @@ Who will you follow?]
 (link: &quot;Thomas – An engineer with a former passion in geology&quot;)[\(set: $persona to &quot;Thomas&quot;)\(go-to: &quot;Intro&quot;)]
 
 (link: &quot;Lucia – A retired local who loves culture&quot;)[\(set: $persona to &quot;Lucia&quot;)\(go-to: &quot;Intro&quot;)]
-</tw-passagedata><tw-passagedata pid="2" name=" Outside the Museum" tags="entrance whitebg" position="875,500" size="100,100">(if: $persona is &quot;Giulia&quot;)[Giulia steps up to the grand entrance of the Luigi Bombicci Museum. She feels a mix of curiosity and nervous excitement of entering a University facility.
-
-*&quot;I wonder what I&#39;ll find inside&quot;* she thinks , clutching her phone and school bag.
-
-](else-if: $persona is &quot;Thomas&quot;)[Thomas arrives at the museum just before noon.  
-The building looks quiet and welcoming.  
-He takes a deep breath, glad to have some time away from work.
-
-*&quot;It’ll be nice to focus on something different for a while&quot;* he says to himself as he walks up the steps.
-
-](else-if: $persona is &quot;Lucia&quot;)[Lucia pauses at the entrance of the museum.  
-She likes visiting places like this in her free time.  
-It feels good to get out and learn something new.
-
-*&quot;This will be a nice day&quot;* she thinks, smiling softly.]
-
-[[Enter the museum -&gt; Gate of Origins]]
-</tw-passagedata><tw-passagedata pid="3" name="Intro" tags="start whitebg" position="875,350" size="100,100">[(if: $persona is &quot;Giulia&quot;)[**Giulia is...**
+</tw-passagedata><tw-passagedata pid="2" name="Intro" tags="start whitebg" position="875,350" size="100,100">[(if: $persona is &quot;Giulia&quot;)[**Giulia is...**
 
 A 17 year old high school student from Bologna.
 Curious about everything, and always eager to learn something new.
-After seeing a TikTok video of some glowing stones, she decides to step into the museum she usually just walks past, thinking it might be fun.](else-if: $persona is &quot;Thomas&quot;)[**Thomas is...**
+After seeing a TikTok video of some glowing stones, she decides to step into the museum she usually just walks past, thinking it might be fun.
+&lt;div class=&quot;character-box&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/giulia.png&quot; class=&quot;persona&quot;&gt;&lt;/div&gt;
+](else-if: $persona is &quot;Thomas&quot;)[**Thomas is...**
 
 A tech engineer, age 38.
-His usual days were packed with deadlines, and he needed a break from it.
-He remembered the museum of minerals - a passion he used to have as a child.
+His usual days were packed with deadlines, and he needed a break from it. He remembered the museum of minerals - a passion he used to have as a child.
 He decides to take the day off, to reconnect with an old interest.
-](else-if: $persona is &quot;Lucia&quot;)[**Lucia is...**
+
+&lt;div class=&quot;character-box&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/thomas.png&quot; class=&quot;persona&quot;&gt;&lt;/div&gt;](else-if: $persona is &quot;Lucia&quot;)[**Lucia is...**
 
 A retired librarian and longtime Bologna resident. 
 After retirement, she likes to spends her freetime revisiting local museums, to enjoy a cultural experience.
-Today, she&#39;s come to this one.
-]]
-
-[[Start the story -&gt; Outside the Museum]]</tw-passagedata><tw-passagedata pid="4" name=" Gate of Origins" tags="inside" position="525,550" size="100,100">[At the entrance, {$persona} is greeted with a museum attendant.
+Today, she&#39;s come to this one.&lt;div class=&quot;character-box&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/lucia.png&quot; class=&quot;persona&quot;&gt;&lt;/div&gt;]]
+[[Start the story -&gt; Outside the Museum]]</tw-passagedata><tw-passagedata pid="3" name=" Gate of Origins" tags="inside" position="525,550" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+[At the entrance, {$persona} is greeted with a museum attendant.
 
 The attendants smiles, and hand over a sleek card with a QR code printed on it.
 The card says:
@@ -210,15 +257,11 @@ The card says:
 
 {$persona} decides to...
 
-[[Approach the kiosk. -&gt; 1st Kiosk Interaction]]
-[[Explore first. -&gt; Collections]]
-
-
-
-
-</tw-passagedata><tw-passagedata pid="5" name=" 1st Kiosk Interaction" tags="inside" position="525,675" size="100,100">{$persona} stands in front of the kiosk screen.
-&lt;div class=&quot;kiosk-wrapper&quot;&gt;
-&lt;div class=&quot;kiosk-frame&quot;&gt;
+[[Approach the kios -&gt; 1st Kiosk Interaction]]
+[[Explore first -&gt; Collections]]
+</tw-passagedata><tw-passagedata pid="4" name=" 1st Kiosk Interaction" tags="inside" position="525,675" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+{$persona} stands in front of the kiosk screen, and watches as a message appears.
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
   &lt;h4&gt;Welcome Seeker&lt;/h4&gt;
   &lt;p&gt;Your journey through Earth’s secrets begins here. This card holds your name and will unlock the paths meant for you.  
 
@@ -226,7 +269,8 @@ Scan your card here&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;(if: $persona is &quot;Giul
 *“Okay... cool?”*](else-if: $persona is &quot;Thomas&quot;)[*&quot;Okay...&quot;* He glances at the reader.](else-if: $persona is &quot;Lucia&quot;)[*&quot;Okay, I should be able to do this&quot;* ]
 
 [[{$persona} scans the card to the reader -&gt; Crystal Twin Opening]]
-</tw-passagedata><tw-passagedata pid="6" name=" Personality Test" tags="inside" position="525,1000" size="100,100">The screen lights up with the first question
+</tw-passagedata><tw-passagedata pid="5" name=" Personality Test" tags="inside" position="525,975" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+The screen lights up with the first question
 
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Question 1: 
@@ -243,14 +287,15 @@ When faced with a tough choice, you tend to....*
 (if: $persona is &quot;Giulia&quot;)[Giulia reads through the options quickly. *&quot;Easy - I&#39;m definitely a gut-reaction person&quot;* she thinks, tapping the first option without hesitation.](else-if: $persona is &quot;Thomas&quot;)[Thomas considers each option carefully. *&quot;I usually analyze things pretty thoroughly&quot;* he reflects, selecting the third option after a moment&#39;s thought.](else-if: $persona is &quot;Lucia&quot;)[Lucia takes her time reading each choice. *&quot;I&#39;ve always been someone who likes to talk things through and consider feelings&quot;* she decides, choosing the second option.]
 
 {$persona} taps their choice and waits for the next question.
-</tw-passagedata><tw-passagedata pid="7" name=" Collections" tags="" position="800,775" size="100,100"></tw-passagedata><tw-passagedata pid="8" name=" Crystal Journey" tags="inside" position="1025,800" size="100,100">The screen comes alive with a captivating time-lapse animation showing geological processes over millions of years.
+</tw-passagedata><tw-passagedata pid="6" name=" Collections" tags="" position="800,775" size="100,100"></tw-passagedata><tw-passagedata pid="7" name=" Crystal Journey" tags="inside" position="1025,800" size="100,100">(set: $persona to &quot;Giulia&quot;)(set: $mineral to &quot;Pyrite&quot;)&lt;!--delete this afterwards--&gt;
+The screen comes alive with a captivating time-lapse animation showing geological processes over millions of years.
 
 (if: $mineral is &quot;Pyrite&quot;)[The animation shows ancient seabeds and hydrothermal vents as the narrator explains: *Pyrite forms in sedimentary and hydrothermal environments when iron and sulfur combine under low-oxygen conditions - often in marine sediments, coal beds, or near the scalding vents of underwater volcanoes.*](else-if: $mineral is &quot;Turquoise&quot;)[The scene shifts to arid landscapes and weathered copper deposits: *Turquoise forms in dry, oxidized environments through the patient reaction of copper, aluminum, and phosphorus with water over countless years, creating its distinctive blue-green beauty in volcanic and sedimentary rocks.*](else-if: $mineral is &quot;Amethyst&quot;)[Purple crystals grow within dark cavities as the story unfolds: *Amethyst, the purple variety of quartz, forms in geodes within volcanic rocks where silica-rich fluids containing traces of iron slowly cool and crystallize, with natural radiation creating that signature purple hue.*]
 
 (if: $persona is &quot;Giulia&quot;)[Giulia watches in fascination. *&quot;Whoa, so this stuff was forming when dinosaurs were around? That&#39;s insane!&quot;* she whispers to herself.](else-if: $persona is &quot;Thomas&quot;)[Thomas is completely absorbed, remembering why he loved rocks. *&quot;The processes are so elegant... pressure, time, chemistry working together&quot;* he thinks appreciatively.](else-if: $persona is &quot;Lucia&quot;)[Lucia is charmed by the educational presentation. *&quot;What a beautiful way to teach natural history,&quot;* she thinks, taking in every detail.]
 
-[[Find out more -&gt; History and Culture]]</tw-passagedata><tw-passagedata pid="9" name=" Personality Test2" tags="inside" position="525,1125" size="100,100">{$persona} continues through several more questions about decision-making, values, and personal energy. The questions feel surprisingly thoughtful and relevant.
-&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
+[[Find out more -&gt; History and Culture]]</tw-passagedata><tw-passagedata pid="8" name=" Personality Test2" tags="inside" position="525,1125" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+{$persona} continues through several more questions about decision-making, values, and personal energy. The questions feel surprisingly thoughtful and relevant.&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Final Question:
 Which vibe resonates with you most?*
 
@@ -259,11 +304,10 @@ Which vibe resonates with you most?*
 💧 Calm, supportive, heart-centered
 
 🌌 Introspective, wise, curious
+&lt;/div&gt;&lt;/div&gt;(if: $persona is &quot;Giulia&quot;)[*&quot;Definitely the bold one&quot;* Giulia thinks immediately. *&quot;I like to go after what I want&quot;* She taps the fire symbol without hesitation. (set: $mineral to &quot;Pyrite&quot;)](else-if: $persona is &quot;Thomas&quot;)[Thomas pauses, considering. *&quot;The calm, supportive one feels right. I&#39;ve always been someone people come to for steady advice.&quot;* He selects the water symbol. (set: $mineral to &quot;Turquoise&quot;)](else-if: $persona is &quot;Lucia&quot;)[*&quot;Introspective and curious - that&#39;s definitely me&quot;* Lucia reflects. *&quot;All those years surrounded by books and knowledge.&quot;* She chooses the cosmic symbol thoughtfully. (set: $mineral to &quot;Amethyst&quot;)]
 
-&lt;/div&gt;&lt;/div&gt;
-(if: $persona is &quot;Giulia&quot;)[*&quot;Definitely the bold one&quot;* Giulia thinks immediately. *&quot;I like to go after what I want&quot;* She taps the fire symbol without hesitation. (set: $mineral to &quot;Pyrite&quot;)](else-if: $persona is &quot;Thomas&quot;)[Thomas pauses, considering. *&quot;The calm, supportive one feels right. I&#39;ve always been someone people come to for steady advice.&quot;* He selects the water symbol. (set: $mineral to &quot;Turquoise&quot;)](else-if: $persona is &quot;Lucia&quot;)[*&quot;Introspective and curious - that&#39;s definitely me&quot;* Lucia reflects. *&quot;All those years surrounded by books and knowledge.&quot;* She chooses the cosmic symbol thoughtfully. (set: $mineral to &quot;Amethyst&quot;)]
-
-[[Continue -&gt; Test Result]]</tw-passagedata><tw-passagedata pid="10" name=" Test Result" tags="inside" position="525,1250" size="100,100">The screen dims momentarily, then displays a swirling animation of crystalline patterns forming and reshaping.
+[[Continue -&gt; Test Result]]</tw-passagedata><tw-passagedata pid="9" name=" Test Result" tags="inside" position="525,1250" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+The screen dims momentarily, then displays a swirling animation of crystalline patterns forming and reshaping.
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 Processing your responses...
 
@@ -275,21 +319,23 @@ We have identified your mineral twin based on your unique personality profile.
 &lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Giulia&quot;)[Giulia bounces slightly on her feet with anticipation. *&quot;Come on, show me!&quot;* she thinks excitedly.](else-if: $persona is &quot;Thomas&quot;)[Thomas finds himself genuinely curious about the result. *&quot;I haven&#39;t thought about minerals in years, but this is bringing back that old fascination&quot;* he realizes.](else-if: $persona is &quot;Lucia&quot;)[Lucia watches the swirling patterns with appreciation. *&quot;What a lovely way to build anticipation&quot;* she thinks, enjoying the theatrical presentation.]
 
-{$persona} clicks to discover their result.</tw-passagedata><tw-passagedata pid="11" name=" Crystal Twin" tags="inside" position="525,1375" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt; 
-CONGRATULATIONS {$persona},
+{$persona} taps to discover their result.</tw-passagedata><tw-passagedata pid="10" name=" Crystal Twin" tags="inside" position="525,1375" size="100,100">(set: $persona to &quot;Giulia&quot;)(set: $mineral to &quot;Pyrite&quot;)&lt;!--delete this afterwards--&gt;
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt; 
+CONGRATULATIONS {$persona}
 YOUR CRYSTAL TWIN IS 
-&lt;h3&gt;{$mineral}&lt;/h3&gt;
-
-(if: $mineral is &quot;Pyrite&quot;)[*Ambitious, confident, goal-oriented, natural entrepreneur, attracts opportunities*]
-(else-if: $mineral is &quot;Turquoise&quot;)[*Excellent communicator, peaceful, seeks balance, values friendship and community*]
-(else-if: $mineral is &quot;Amethyst&quot;)[*Intuitive, philosophical, seeks deeper meaning, creative, values wisdom over material wealth*]
+&lt;h3&gt;{$mineral}&lt;/h3&gt;(if: $mineral is &quot;Pyrite&quot;)[
+&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/pyrite.jpg&quot; class=&quot;mineral&quot;&gt;
+*Ambitious, confident, goal-oriented, natural entrepreneur, attracts opportunities*](else-if: $mineral is &quot;Turquoise&quot;)[
+&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/turquoise.jpg&quot; class=&quot;mineral&quot;&gt;
+*Excellent communicator, peaceful, seeks balance, values friendship and community*](else-if: $mineral is &quot;Amethyst&quot;)[
+&lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/amethyst.jpg&quot; class=&quot;mineral&quot;&gt;
+*Intuitive, philosophical, seeks deeper meaning, creative, values wisdom over material wealth*]
 &lt;/div&gt;&lt;/div&gt;
 
 (if: $persona is &quot;Giulia&quot;)[*&quot;Pyrite - I like the sound of that!&quot;* Giulia grins, reading the description. *&quot;Ambitious and confident? Yeah, that&#39;s totally me.&quot;* ](else-if: $persona is &quot;Thomas&quot;)[Thomas reads the description with a growing smile. *&quot;Turquoise... peaceful and balanced. That&#39;s exactly what I&#39;ve been trying to find lately.&quot;* The description feels surprisingly accurate.](else-if: $persona is &quot;Lucia&quot;)[Lucia nods approvingly as she reads about Amethyst. *&quot;Seeking deeper meaning and valuing wisdom - that does sound like my approach to life&quot;* she thinks warmly.]
 
 [[Continue -&gt; Crystal Twin Ending]]
-</tw-passagedata><tw-passagedata pid="12" name=" Crystal Twin Opening" tags="inside" position="525,825" size="100,100">{$persona} watches as another message appears on the screen.
-
+</tw-passagedata><tw-passagedata pid="11" name=" Crystal Twin Opening" tags="inside" position="525,825" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 Hello {$persona}
 
@@ -299,21 +345,18 @@ Are you ready to discover your Crystal Twin?
 &lt;/div&gt;&lt;/div&gt;(if: $persona is &quot;Giulia&quot;)[She leans forward eagerly. *&quot;Okay, now this is getting interesting!&quot;* she thinks, already curious about what mineral she might match with.](else-if: $persona is &quot;Thomas&quot;)[A small smile crosses his face — this feels like exactly the kind of break he needed. *&quot;Let&#39;s see what this reveals&quot;* he thinks, genuinely intrigued.](else-if: $persona is &quot;Lucia&quot;)[She adjusts her reading glasses and nods thoughtfully. *&quot;I wonder what aspects of personality they&#39;ll explore&quot;* she muses, approaching this with genuine curiosity.]
 
 [[Continue-&gt; Personality Test]]
-</tw-passagedata><tw-passagedata pid="13" name=" Crystal Twin Ending" tags="inside" position="525,1500" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
-Now that you&#39;ve discovered your Crystal Twin, you can:
+</tw-passagedata><tw-passagedata pid="12" name=" Crystal Twin Ending" tags="inside" position="525,1500" size="100,100">(set: $persona to &quot;Giulia&quot;)(set: $mineral to &quot;Pyrite&quot;)&lt;!--delete this afterwards--&gt;&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;Now that you&#39;ve discovered your Crystal Twin, you can:
 
 🔍 Learn about your mineral&#39;s fascinating origins and cultural significance
 
 💎 Visit the actual specimen in our collection
 
-What calls to you?
-&lt;/div&gt;&lt;/div&gt;
-(if: $persona is &quot;Giulia&quot;)[Giulia&#39;s curiosity is fully engaged now. *&quot;I want to know everything about this Pyrite&quot;* she thinks.](else-if: $persona is &quot;Thomas&quot;)[Thomas feels a familiar excitement - the same feeling he had as a kid when he first got interested in rocks and minerals.](else-if: $persona is &quot;Lucia&quot;)[Lucia appreciates having options and wants to make the most of her visit. *&quot;Both sound wonderful, but let me start with the stories&quot;* she decides.]
+What calls to you?&lt;/div&gt;&lt;/div&gt;(if: $persona is &quot;Giulia&quot;)[Giulia&#39;s curiosity is fully engaged now. *&quot;I want to know everything about this Pyrite&quot;* she thinks.](else-if: $persona is &quot;Thomas&quot;)[Thomas feels a familiar excitement - the same feeling he had as a kid when he first got interested in rocks and minerals.](else-if: $persona is &quot;Lucia&quot;)[Lucia appreciates having options and wants to make the most of her visit. *&quot;Both sound wonderful, but let me start with the stories&quot;* she decides.]
 
 {$persona} decides to 
 
 [[Find out more about the (lowercase:&quot;$mineral&quot;) -&gt; Crystal Journey Opening]] 
-[[Go see the actual (lowercase:&quot;$mineral&quot;) -&gt; item collection ]]</tw-passagedata><tw-passagedata pid="14" name=" item collection " tags="" position="725,1350" size="100,100"></tw-passagedata><tw-passagedata pid="15" name=" Crystal Mini Quiz" tags="inside" position="1025,1050" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
+[[Go see the actual (lowercase:&quot;$mineral&quot;) -&gt; item collection ]]</tw-passagedata><tw-passagedata pid="13" name=" item collection " tags="" position="725,1350" size="100,100"></tw-passagedata><tw-passagedata pid="14" name=" Crystal Mini Quiz" tags="inside" position="1025,1050" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Ready to test your new knowledge?*
 
 Time for &quot;Two Truths and a Lie&quot; - can you spot which statement about your Crystal Twin is false?
@@ -333,7 +376,7 @@ Put your detective skills to the test!
   [[Try the quiz-&gt; Quiz Turquoise]]
 ]
 
-</tw-passagedata><tw-passagedata pid="16" name=" Quiz Pyrite" tags="inside" position="900,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Two Truths and a Lie — can you spot the made-up history?
+</tw-passagedata><tw-passagedata pid="15" name=" Quiz Pyrite" tags="inside" position="900,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Two Truths and a Lie — can you spot the made-up history?
 
 Your goal is to identify the lie that is hidden in one of the choices*
 
@@ -344,7 +387,7 @@ Your goal is to identify the lie that is hidden in one of the choices*
 
 [[Pyrite can spark when struck against metal or stone. -&gt; Truth]]
 &lt;/div&gt;&lt;/div&gt;
-(if: $persona is &quot;Giulia&quot;)[Giulia reads each option carefully. *&quot;Hmm, I remember something about fool&#39;s gold... and sparking sounds right from what they showed us. But major source of real gold? That seems fishy&quot;* she thinks, analyzing each statement.]</tw-passagedata><tw-passagedata pid="17" name=" Quiz Amethyst" tags="inside" position="1025,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
+(if: $persona is &quot;Giulia&quot;)[Giulia reads each option carefully. *&quot;Hmm, I remember something about fool&#39;s gold... and sparking sounds right from what they showed us. But major source of real gold? That seems fishy&quot;* she thinks, analyzing each statement.]</tw-passagedata><tw-passagedata pid="16" name=" Quiz Amethyst" tags="inside" position="1025,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Two Truths and a Lie — can you spot the made-up history?
 
 Your goal is to identify the lie that is hidden in one of the choices*
@@ -356,7 +399,7 @@ Your goal is to identify the lie that is hidden in one of the choices*
 
 [[Amethyst is one of the rarest and most expensive gemstones. -&gt; Lie]]
 &lt;/div&gt;&lt;/div&gt;
-(if: $persona is &quot;Lucia&quot;)[Lucia considers each statement methodically. *&quot;The color explanation sounds scientifically accurate, and I recall reading about the ancient Greek beliefs about sobriety. But rarest and most expensive? I don&#39;t think that&#39;s right - I&#39;ve seen amethyst in many places&quot;* she reasons thoughtfully.]</tw-passagedata><tw-passagedata pid="18" name=" Quiz Turquoise" tags="inside" position="1150,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
+(if: $persona is &quot;Lucia&quot;)[Lucia considers each statement methodically. *&quot;The color explanation sounds scientifically accurate, and I recall reading about the ancient Greek beliefs about sobriety. But rarest and most expensive? I don&#39;t think that&#39;s right - I&#39;ve seen amethyst in many places&quot;* she reasons thoughtfully.]</tw-passagedata><tw-passagedata pid="17" name=" Quiz Turquoise" tags="inside" position="1150,1200" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Two Truths and a Lie — can you spot the made-up history?
 
 Your goal is to identify the lie that is hidden in one of the choices*
@@ -368,7 +411,7 @@ Your goal is to identify the lie that is hidden in one of the choices*
 [[Turquoise forms in volcanic environments under intense pressure and heat. -&gt; Lie]]
 &lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Thomas&quot;)[Thomas draws on both his recent learning and his old geological knowledge. *&quot;Blue-to-green and opaque - that matches what I&#39;ve seen. Ancient civilizations definitely valued it. But volcanic environments with intense pressure? That doesn&#39;t match what we just learned about weathered copper deposits,&quot;* he analyzes systematically.]
-</tw-passagedata><tw-passagedata pid="19" name=" Lie" tags="inside" position="900,1375" size="100,100">
+</tw-passagedata><tw-passagedata pid="18" name=" Lie" tags="inside" position="900,1375" size="100,100">
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 ✅ Well spotted! That was the lie.
 Minerals hold fascinating stories — but not *everything* you hear is true.  
@@ -376,7 +419,7 @@ Good instincts, {$persona}.
 &lt;/div&gt;&lt;/div&gt;
 
 [[Continue your journey -&gt; Crystal Journey Ending]]
-</tw-passagedata><tw-passagedata pid="20" name=" Truth" tags="inside" position="1050,1375" size="100,100">The screen flashes gently and then displays:
+</tw-passagedata><tw-passagedata pid="19" name=" Truth" tags="inside" position="1050,1375" size="100,100">The screen flashes gently and then displays:
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *❌ That one’s actually true!*
 
@@ -390,14 +433,14 @@ Good instincts, {$persona}.
 ]
 
 [[Continue your journey -&gt; Crystal Journey Ending]]
-</tw-passagedata><tw-passagedata pid="21" name=" Crystal Reflection" tags="inside" position="1425,675" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*The journey outward is complete. Now comes the journey inward.*
+</tw-passagedata><tw-passagedata pid="20" name=" Crystal Reflection" tags="inside" position="1425,675" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*The journey outward is complete. Now comes the journey inward.*
 
 Like the minerals deep in Earth, you too have been shaped by time, pressure, and unique conditions. You have layers, depth, and your own inner brilliance.
 
 *Continue to see yourself reflected through your Crystal Twin*
 &lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Giulia&quot;)[*&quot;Okay, this is getting deep&quot;* Giulia thinks, but she&#39;s intrigued. *&quot;I&#39;m curious what they mean by seeing myself reflected.&quot;*](else-if: $persona is &quot;Thomas&quot;)[*&quot;A journey inward... that&#39;s exactly what I came here looking for,&quot;* Thomas reflects, feeling ready for whatever comes next.](else-if: $persona is &quot;Lucia&quot;)[*&quot;Oh, what could that mean?&quot;* Lucia wonders. *&quot;Well I do appreciate experiences that encourage self-reflection.&quot;*]
-[[Continue-&gt; Augmented Mirror]]</tw-passagedata><tw-passagedata pid="22" name=" Crystal Journey Ending" tags="inside" position="1025,1525" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*You&#39;ve traced your Crystal Twin through deep time and human history.*
+[[Continue-&gt; Augmented Mirror]]</tw-passagedata><tw-passagedata pid="21" name=" Crystal Journey Ending" tags="inside" position="1025,1525" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*You&#39;ve traced your Crystal Twin through deep time and human history.*
 
 From ancient earth processes to cultural treasures, you&#39;ve seen how minerals connect us to both our planet&#39;s past and our shared human heritage.
 
@@ -405,7 +448,8 @@ From ancient earth processes to cultural treasures, you&#39;ve seen how minerals
 &lt;/div&gt;&lt;/div&gt;(if: $persona is &quot;Giulia&quot;)[*&quot;This has been way more interesting than I expected&quot;* Giulia thinks, genuinely impressed. *&quot;I&#39;m curious what comes next&quot;*](else-if: $persona is &quot;Thomas&quot;)[*&quot;I feel more connected to this than I have to anything in months&quot;* Thomas notices. *&quot;This is exactly the kind of perspective I needed.&quot;*](else-if: $persona is &quot;Lucia&quot;)[&quot;*It is indeed a beautifully designed educational experience&quot;* Lucia thinks with satisfaction. *&quot;I&#39;m eager to see how they conclude this journey&quot;*]
 
 [[Step into the Reflection Core -&gt; Crystal Reflection]]
-[[Explore freely instead -&gt; Collections]]</tw-passagedata><tw-passagedata pid="23" name=" History and Culture" tags="inside" position="1025,925" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*The Complete Story of {$mineral}*
+[[Explore freely instead -&gt; Collections]]</tw-passagedata><tw-passagedata pid="22" name=" History and Culture" tags="inside" position="1025,925" size="100,100">(set: $persona to &quot;Giulia&quot;)(set: $mineral to &quot;Pyrite&quot;)&lt;!--delete this afterwards--&gt;
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*The Complete Story of {$mineral}*
 
 **🌍 Geographic Origins:**
 (if: $mineral is &quot;Pyrite&quot;)[Found worldwide, but notable deposits in Spain, Peru, and the American Southwest. Often discovered alongside coal and in hydrothermal veins.](else-if: $mineral is &quot;Turquoise&quot;)[Primary sources include Iran, Tibet, southwestern United States, and Egypt. Forms in arid regions with copper deposits.](else-if: $mineral is &quot;Amethyst&quot;)[Major deposits in Brazil, Uruguay, Zambia, and South Korea. Forms in volcanic rock cavities called geodes.]
@@ -420,17 +464,19 @@ From ancient earth processes to cultural treasures, you&#39;ve seen how minerals
 
 [[Find out about other minerals -&gt; Other Minerals]]
 [[Continue -&gt; Crystal Mini Quiz]]
-</tw-passagedata><tw-passagedata pid="24" name=" Augmented Mirror" tags="inside" position="1425,825" size="100,100">The kiosk screen transforms into a sophisticated mirror display. {$persona} sees their reflection, but something magical begins to happen - augmented reality overlays start appearing around their image.
+</tw-passagedata><tw-passagedata pid="23" name=" Augmented Mirror" tags="inside" position="1425,825" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+The kiosk screen transforms into a sophisticated mirror display. {$persona} sees their reflection, but something magical begins to happen - augmented reality overlays start appearing around their image.
 
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;**Your crystal reflects your essence.**  
  Vibrant, thoughtful, grounded, curious, kind — it&#39;s all there.  
 
 📸 *Touch to capture your Crystal Portrait.*
 &lt;/div&gt;&lt;/div&gt;
-(if: $persona is &quot;Giulia&quot;)[Giulia gasps as golden, metallic sparkles dance around her reflection like tiny suns. The pyrite&#39;s bold energy seems to amplify her natural confidence - she sees herself surrounded by ambitious, electric energy that makes her stand taller. *&quot;Whoa, this is actually amazing&quot;* she thinks to herself, struck by how the visualization captures something she feels inside.](else-if: $persona is &quot;Thomas&quot;)[Thomas watches in wonder as serene blue-green waves flow around his reflection, like gentle water or peaceful sky. The turquoise energy feels calming and grounding - exactly what his stressed soul has been craving. He takes a deep breath, feeling more centered than he has in months. *&quot;I am feeling energetic again&quot;* he murmurs softly.](else-if: $persona is &quot;Lucia&quot;)[Lucia observes with delight as deep purple light swirls around her reflection in contemplative, graceful patterns. The amethyst energy feels wise and knowing, reflecting her love of learning and quiet strength. She nods appreciatively at her reflected self. *&quot;How beautiful this captures this experience.. I wished I owned a mirror like this&quot;* she chuckles with satisfaction.]
+(if: $persona is &quot;Giulia&quot;)[Giulia gasps as golden, metallic sparkles dance around her reflection like tiny suns. The pyrite&#39;s bold energy seems to amplify her natural confidence - she sees herself surrounded by ambitious, electric energy that makes her stand taller. *&quot;Whoa, this is actually amazing&quot;* she thinks to herself, struck by how the visualization captures something she feels inside.](if: $persona is &quot;Thomas&quot;)[Thomas watches in wonder as serene blue-green waves flow around his reflection, like gentle water or peaceful sky. The turquoise energy feels calming and grounding - exactly what his stressed soul has been craving. He takes a deep breath, feeling more centered than he has in months. *&quot;I am feeling energetic again&quot;* he murmurs softly.](if: $persona is &quot;Lucia&quot;)[Lucia observes with delight as deep purple light swirls around her reflection in contemplative, graceful patterns. The amethyst energy feels wise and knowing, reflecting her love of learning and quiet strength. She nods appreciatively at her reflected self. *&quot;How beautiful this captures this experience.. I wished I owned a mirror like this&quot;* she chuckles with satisfaction.]
 
 [[📸 Take Crystal Portrait -&gt; SavePhoto]]
-[[Skip the photo -&gt; Mineral Memories]]</tw-passagedata><tw-passagedata pid="25" name=" Crystal Journey Opening" tags="inside" position="1025,675" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
+[[Skip the photo -&gt; Mineral Memories]]</tw-passagedata><tw-passagedata pid="24" name=" Crystal Journey Opening" tags="inside" position="1025,675" size="100,100">(set: $persona to &quot;Giulia&quot;)&lt;!--delete this afterwards--&gt;
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 *Hello {$persona}*
 
 Your Crystal Twin has a story spanning millions of years. Follow your mineral through Earth&#39;s memory - discover where it formed, who treasured it, and the myths that grew around it.
@@ -438,21 +484,13 @@ Your Crystal Twin has a story spanning millions of years. Follow your mineral th
 Ready to journey through time?&lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Giulia&quot;)[*&quot;A journey through time? Now we&#39;re talking!*&quot; Giulia thinks, her eyes lighting up with excitement.](else-if: $persona is &quot;Thomas&quot;)[Thomas feels that familiar pull of geological curiosity. *&quot;I used to love learning about how rocks formed&quot;* he remembers fondly.](else-if: $persona is &quot;Lucia&quot;)[Lucia settles in comfortably. *&quot;Stories through time - this is exactly the kind of cultural exploration I enjoy&quot;* she thinks with satisfaction.]
 
-[[Start the journey -&gt; Crystal Journey]]</tw-passagedata><tw-passagedata pid="26" name=" Other Minerals" tags="inside" position="1175,975" size="100,100">&lt;!--create a modal for 3 minerals--&gt;
-&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Curious about the other Crystal Twins?*
+[[Start the journey -&gt; Crystal Journey]]</tw-passagedata><tw-passagedata pid="25" name=" SavePhoto" tags="inside" position="1450,950" size="100,100">(set: $persona to &quot;Thomas&quot;)&lt;!--delete this afterwards--&gt;
+{$persona} touches the screen and watches as the AR effects freeze in place for a moment, creating a perfect crystalline portrait.
 
-**Quick peek at the other minerals:**
-(link: &quot;🔥 **Pyrite** - The confidence stone, fool&#39;s gold, fire starter&quot;)[(dialog: &quot;Pyrite, known as Fool&#39;s Gold during has been valued since ancient times for practical uses like fire-starting in flintlocks and creating mirrors. Culturally, it symbolizes prosperity, confidence, and the manifestation of one&#39;s goals. Today, pyrite finds practical applications in sulfur production for sulfuric acid manufacturing, semiconductor industry processes, and as decorative mineral specimens&quot;)]
-(link: &quot;💧 **Turquoise** - The communication stone, sky bridge, protector  &quot;)[(dialog: &quot;Turquoise has been considered sacred by Native Americans, Egyptians, and Persians, who used it in burial masks, ceremonial objects, and amulets. It symbolizes communication, healing, and protection during travel. Today, turquoise is utilized in jewelry, decorative inlays, and traditional medicine practices in some cultures.&quot;)]
-(link: &quot;🌌 **Amethyst** - The wisdom stone, sobriety guardian, peace bringe&quot;)[(dialog: &quot;Amethyst forms in arid, oxidized environments, often in the weathered zones of copper deposits. 
-It results from the chemical reaction of copper, aluminum, and phosphorus with water over long periods, often in volcanic or sedimentary rocks&quot;)]
-&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Your Crystal Portrait has been saved.* (if: $persona is &quot;Giulia&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/giulia_mirror.png&quot; class=&quot;portrait&quot;&gt;] (if: $persona is &quot;Thomas&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/thomas_mirror.png&quot; class=&quot;portrait&quot;&gt;] (if: $persona is &quot;Lucia&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/lucia_mirror.png&quot; class=&quot;portrait&quot;&gt;]
 
-[[Continue to your quiz -&gt; Crystal Mini Quiz]]</tw-passagedata><tw-passagedata pid="27" name=" SavePhoto" tags="inside" position="1425,975" size="100,100">{$persona} touches the screen and watches as the AR effects freeze in place for a moment, creating a perfect crystalline portrait.
-
-&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Your Crystal Portrait has been saved.*  
 This image reflects both your outer self and your inner mineral essence - a unique moment where science, technology, and personal discovery unite.
-&gt; You can download it below.
+You can download it below.
 
 ⬇️ [**Download your portrait**]
 
@@ -460,25 +498,23 @@ This image reflects both your outer self and your inner mineral essence - a uniq
 (if: $persona is &quot;Giulia&quot;)[*&quot;I&#39;m definitely posting this on social media!&quot;* Giulia grins, already imagining the caption she&#39;ll write about her museum adventure.](else-if: $persona is &quot;Thomas&quot;)[*&quot;A reminder of this moment&quot;* Thomas thinks, appreciating having something tangible from this unexpectedly meaningful experience.](else-if: $persona is &quot;Lucia&quot;)[*&quot;A lovely keepsake&quot;* Lucia smiles, pleased to have a memento of such a thoughtful experience.]
 
 [[Continue your journey -&gt; Mineral Memories]]
-</tw-passagedata><tw-passagedata pid="28" name=" Mineral Memories" tags="inside" position="1400,1125" size="100,100">The kiosk screen shifts to display an elegant certificate design as a printer beside the station quietly activates.
+</tw-passagedata><tw-passagedata pid="26" name=" Mineral Memories" tags="inside" position="1425,1125" size="100,100">(set: $persona to &quot;Lucia&quot;)&lt;!--delete this afterwards--&gt;
+The kiosk screen shifts to display an elegant certificate design as a printer beside the station quietly activates.
 
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;
 🏛️ **Stone Seekers Experience Certificate**
 
-*Issued by the Mineralogical Collection &quot;Luigi Bombicci Museum&quot;*
-
-**Seeker:** {$persona}  
-**Crystal Twin:** {$mineral}  
 **Journey Completed:** [Current Date]
+ (if: $persona is &quot;Giulia&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/certificate_g.jpg&quot; class=&quot;portrait&quot;&gt;] (if: $persona is &quot;Thomas&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/certificate_t.jpg&quot; class=&quot;portrait&quot;&gt;] (if: $persona is &quot;Lucia&quot;)[ &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img//certificate_l.jpg&quot; class=&quot;portrait&quot;&gt;]
+ *Issued by the Mineralogical Collection &quot;Luigi Bombicci Museum&quot;*
 
 *&quot;Every stone has traveled millions of years to meet you at this moment. Today, you discovered not just a mineral, but a reflection of your own unique journey through time.&quot;*
 
 🔗 **Your Digital Archive:** [Personal link would be generated here]
-*(Complete quiz results, learning progress, and portrait saved)*
 &lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Giulia&quot;)[Giulia takes the warm certificate from the printer tray, impressed by the quality. *&quot;This is will be a memorable souvenir - honestly I didn&#39;t expected this from a museum&quot;* she thinks, carefully folding it to put in her bag.](else-if: $persona is &quot;Thomas&quot;)[Thomas holds the certificate and pauses, genuinely moved. The weight of the paper and the thoughtful design make this feel like a meaningful recognition of his personal journey. *&quot;I&#39;m so glad I took work off for this, totally worth it&quot;.*](else-if: $persona is &quot;Lucia&quot;)[Lucia examines the certificate with the appreciation of someone who understands quality documentation. *&quot;What a thoughtful way to commemorate a museum experience&quot;* she thinks, planning to display this alongside her other cultural mementos.]
 
-[[Exit museum -&gt; Ending]]</tw-passagedata><tw-passagedata pid="29" name=" Ending" tags="start" position="1400,1250" size="100,100">As {$persona} steps out of the Luigi Bombicci Collection and into the Bologna afternoon, they carry something new with them - not just knowledge about minerals, but a fresh perspective on their own inner landscape.
+[[Exit museum -&gt; Ending]]</tw-passagedata><tw-passagedata pid="27" name=" Ending" tags="start" position="1425,1275" size="100,100">As {$persona} steps out of the Luigi Bombicci Collection and into the Bologna afternoon, they carry something new with them - not just knowledge about minerals, but a fresh perspective on their own inner landscape.
 
 The experience has reminded them that, like the crystals they learned about, everyone is formed by unique pressures, time, and conditions. Everyone has their own hidden brilliance waiting to be discovered.
 
@@ -496,6 +532,32 @@ The experience has reminded them that, like the crystals they learned about, eve
 
 
 [[Start Over -&gt; Start: Select Persona]]
+</tw-passagedata><tw-passagedata pid="28" name=" Outside the Museum" tags="entrance whitebg" position="875,500" size="100,100">(if: $persona is &quot;Giulia&quot;)[Giulia steps up to the grand entrance of the Luigi Bombicci Museum. She feels a mix of curiosity and nervous excitement of entering a University facility.
+
+*&quot;I wonder what I&#39;ll find inside&quot;* she thinks , clutching her phone and school bag.
+
+](else-if: $persona is &quot;Thomas&quot;)[Thomas arrives at the museum just before noon.  
+The building looks quiet and welcoming.  
+He takes a deep breath, glad to have some time away from work.
+
+*&quot;It’ll be nice to focus on something different for a while&quot;* he says to himself as he walks up the steps.
+
+](else-if: $persona is &quot;Lucia&quot;)[Lucia pauses at the entrance of the museum.  
+She likes visiting places like this in her free time.  
+It feels good to get out and learn something new.
+
+*&quot;This will be a nice day&quot;* she thinks, smiling softly.]
+
+[[Enter the museum -&gt; Gate of Origins]]
+</tw-passagedata><tw-passagedata pid="29" name=" Other Minerals" tags="inside" position="1175,950" size="100,100">&lt;!--create a modal for 3 minerals--&gt;
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;*Curious about the other Crystal Twins?*
+
+**Quick peek at the other minerals:**
+(link-repeat: &quot;🔥 **Pyrite** - The confidence stone, fool&#39;s gold, fire starter&quot;)[(dialog: &quot;Pyrite, known as Fool&#39;s Gold during has been valued since ancient times for practical uses like fire-starting in flintlocks and creating mirrors. Culturally, it symbolizes prosperity, confidence, and the manifestation of one&#39;s goals. Today, pyrite finds practical applications in sulfur production for sulfuric acid manufacturing, semiconductor industry processes, and as decorative mineral specimens&quot;)&lt;/div&gt;]
+(link-repeat: &quot;💧 **Turquoise** - The communication stone, sky bridge, protector  &quot;)[(dialog: &quot;Turquoise has been considered sacred by Native Americans, Egyptians, and Persians, who used it in burial masks, ceremonial objects, and amulets. It symbolizes communication, healing, and protection during travel. Today, turquoise is utilized in jewelry, decorative inlays, and traditional medicine practices in some cultures.&quot;)]
+(link-repeat: &quot;🌌 **Amethyst** - The wisdom stone, sobriety guardian, peace bringe&quot;)[(dialog: &quot;Amethyst forms in arid, oxidized environments, often in the weathered zones of copper deposits. 
+It results from the chemical reaction of copper, aluminum, and phosphorus with water over long periods, often in volcanic or sedimentary rocks&quot;)]
+&lt;/div&gt;&lt;/div&gt;
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
