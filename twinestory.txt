@@ -1,0 +1,489 @@
+
+
+
+
+
+----------
+
+<Stone Seeker User Scenario>
+↓ここからスタート！
+----------
+<Start-Select Persona>
+★このPassageは変更なしでOK
+[Welcome to //**STONE SEEKERS**// – a personalized interactive experience inside the **Mineralogical Collection "Luigi Bombicci Museum"**, Bologna.
+This Twine simulates the museum’s digital installation, where visitors explore their personal connection to minerals through an interactive journey.
+
+You will step into the shoes of different museum visitors and experience the exhibit from their perspective.
+
+Who will you follow?]
+
+
+(link: "Giulia – A curious high school student from Bologna")[(set: $persona to "Giulia")(go-to: "Intro")]
+
+(link: "Thomas – An engineer with a former passion in geology")[\(set: $persona to "Thomas")\(go-to: "Intro")]
+
+(link: "Lucia – A retired local who loves culture")[\(set: $persona to "Lucia")\(go-to: "Intro")]
+
+----------
+<Intro>
+★このPassageは変更なしでOK
+[(if: $persona is "Giulia")[**Giulia is...**
+
+A 17 year old high school student from Bologna.
+Curious about everything, and always eager to learn something new.
+After seeing a TikTok video of some glowing stones, she decides to step into the museum she usually just walks past, thinking it might be fun.](else-if: $persona is "Thomas")[**Thomas is...**
+
+A tech engineer, age 38.
+His usual days were packed with deadlines, and he needed a break from it.
+He remembered the museum of minerals - a passion he used to have as a child.
+He decides to take the day off, to reconnect with an old interest.
+](else-if: $persona is "Lucia")[**Lucia is...**
+
+A retired librarian and longtime Bologna resident. 
+After retirement, she likes to spends her freetime revisiting local museums, to enjoy a cultural experience.
+Today, she's come to this one.
+]]
+
+[[Start the story -> Outside the Museum]]
+
+----------
+<Outside the Museum>
+★このPassageは変更なしでOK
+(if: $persona is "Giulia")[Giulia steps up to the grand entrance of the *Museo di Mineralogia Luigi Bombicci*. She feels a mix of curiosity and nervous excitement of entering a University facility.
+
+*"I wonder what I'll find inside"* she thinks , clutching her phone and school bag.
+
+](else-if: $persona is "Thomas")[Thomas arrives at the museum just before noon.  
+The building looks quiet and welcoming.  
+He takes a deep breath, glad to have some time away from work.
+
+*"It’ll be nice to focus on something different for a while,"* he says to himself as he walks up the steps.
+
+](else-if: $persona is "Lucia")[Lucia pauses at the entrance of the museum.  
+She likes visiting places like this in her free time.  
+It feels good to get out and learn something new.
+
+*"This will be a nice day"* she thinks, smiling softly.
+
+]
+
+
+[[Enter the museum -> Gate of Origins]]
+----------
+<Gate of Origins>
+★cardを受け取った後のPersona毎の反応を簡単に記してください
+
+[At the entrance, {$persona} is greeted with a museum attendant.
+
+The attendants smiles, and hand over a sleek card with a QR code printed on it.
+The card says:
+]
+
+<img src="https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/QRcard.png" class="cardimage">
+
+
+{$persona} decides to...
+[[Approach the kiosk. -> 1st Kiosk Interaction]]
+[[Explore first. -> Collections]]
+
+
+----------
+<1st Kiosk Interaction>
+★このPassageは変更なしでOK
+
+{$persona} stands in front of the kiosk screen.
+
+<div class="kiosk-wrapper">
+<div class="kiosk-frame">
+  <h4>Welcome Seeker</h4>
+  <p>Your journey through Earth’s secrets begins here. This card holds your name and will unlock the paths meant for you.  
+
+Scan your card here</p>
+</div>
+</div>
+(if: $persona is "Giulia")[She raises an eyebrow.  
+*“Okay... cool?”*](else-if: $persona is "Thomas")[*"Okay..."* He glances at the reader.](else-if: $persona is "Lucia")[*"Okay, I should be able to do this"* ]
+
+[[{$persona} scans the card to the reader -> Crystal Twin Opening]]
+
+
+----------
+<Crystal Twin Opening>
+★画面表示の文章、もうすこし工夫できないでしょうか。
+{$persona} watches as another message appears on the screen.
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">Hello {$persona}. 
+
+You will now take a short personality test that will reveal your mineral identity.
+
+</div></div>
+
+(if: $persona is "Giulia")[
+She is definitely intrigued now.]
+(else-if: $persona is "Thomas")[
+A small smile crosses his face — this feels like exactly the kind of break he needed.]
+(else-if: $persona is "Lucia")[She nods quietly to herself, curious about what the journey will reveal.]
+
+[[Continue-> Personality Test]]
+
+----------
+<Personality Test>
+★最初の問題は、画面タッチ風に選ぶようになっています。各ペルソナの想定セリフを入れてください
+
+The screen lights up.
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*Question 1: 
+When faced with a tough choice, you tend to....*
+
+
+[[ Go with your gut and act fast -> Personality Test2]]
+
+[[ Talk it through and reflect on how it feels-> Personality Test2]]
+
+[[ Analyze the patterns and look deeper -> Personality Test2]]
+
+</div></div>
+
+{$persona} taps a choice for the first question..
+
+----------
+<Personality Test2>
+★ここは今はリンクに飛ぶようになっていますが、変更したいです。GiuliaはPyrite、ThomasはTurquise、LuciaはAmethystを選ぶということがわかるセリフを入れてください。
+選択肢のリンクは削除し、最後にContinueなどで次に進むように変えてください。
+$mineralのvariableと、$personaのvariableのセットをここで行ってください。
+
+{$persona} continues to tap on the answers, laughing at some of them, then reaches the final question.
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*Final Question:
+Which vibe resonates with you most?*
+
+
+(link: "🔥 Bold, electric, goal-driven")[(set: $mineral to "Pyrite")(go-to: "Test Result")]
+
+(link: "💧 Calm, supportive, heart-centered")[\(set: $mineral to "Turquoise")\(go-to: "Test Result")]
+
+(link: "🌌 Introspective, wise, curious")[\(set: $mineral to "Amethyst")\(go-to: "Test Result")]
+
+</div></div>
+
+*"This is a hard one.."*
+
+----------
+<Test Result>
+★画面表示の文章、もうすこし工夫できないでしょうか。最後の各ペルソナの反応を追加してください
+Eventually, a swirling crystal appears on screen.
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+We have identified your inner mineral.
+
+
+  <div class="custom-button">  [[<h6>Discover your Crystal Twin<h6> -> Crystal Twin]]  </div>
+</div></div>
+
+{$persona} clicks to the button find out.
+*"What could it be..?"*
+
+----------
+<Cystal twin>
+★マクロを、ペルソナ毎に表示するように変更してください。（GiuliaならPyrite、ThomasならTurquoise、LuciaならAmethystに）。ペルソナ毎の反応を追加してください
+<div class="kiosk-wrapper"><div class="kiosk-frame"> 
+CONGRATULATIONS {$persona},
+YOUR CRYSTAL TWIN IS 
+<h3>{$mineral}</h3>
+
+(if: $mineral is "Pyrite")[*Ambitious, confident, goal-oriented, natural entrepreneur, attracts opportunities*]
+(else-if: $mineral is "Turquoise")[*Excellent communicator, peaceful, seeks balance, values friendship and community*]
+(else-if: $mineral is "Amethyst")[*Intuitive, philosophical, seeks deeper meaning, creative, values wisdom over material wealth*]
+</div></div>
+
+*"wow, that pretty much describes my character!"*
+
+[[Continue -> Crystal Twin Ending]]
+
+----------
+<Crystal Twin Ending>
+★画面表示文をもう少し工夫してください
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+Would you like to 
+discover the origins and cultural importance?
+or
+See the real specimen of your crystal twin?
+
+</div></div>
+
+{$persona} decides to 
+[[Find out more about the (lowercase:"$mineral") -> Crystal Journey Opening]] 
+[[Go see the actual (lowercase:"$mineral") -> item collection ]]
+
+----------
+<Crystal Journey Opening>
+★ペルソナ毎のセリフを追加してください
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*Hello $persona*
+
+''Follow your mineral through Earth’s memory.
+ Discover where it formed, who used it — and who may have lied about it.''
+</div></div>
+
+[[Start the journey -> Crystal Journey]]
+
+
+----------
+<Crystal Journey>
+★1文目を自然に変えてください。ペルソナ毎のセリフを追加してください
+
+A timelapse video starts, showing the transformation.
+
+(if: $mineral is "Pyrite")[*Pyrite typically forms in sedimentary and hydrothermal environments. It forms when iron and sulfur combine under low-oxygen conditions, often in marine sediments, coal beds, or near hydrothermal vents.*]
+(else-if: $mineral is "Turquoise")[*Turquoise forms in arid, oxidized environments, often in the weathered zones of copper deposits. 
+It results from the chemical reaction of copper, aluminum, and phosphorus with water over long periods, often in volcanic or sedimentary rocks.
+.*]
+(else-if: $mineral is "Amethyst")[*Amethyst is a purple variety of quartz. It forms in geodes or cavities within volcanic rocks, where silica-rich fluids containing trace amounts of iron cool and crystallize over time. The purple color comes from irradiated iron impurities.
+*]
+
+{$persona} whispers,*"Wow, I can't believe it's changed so much over time."*
+
+[[Find out more -> History and Culture]]
+
+----------
+<History and Culture>
+★1文目を自然に変えてください。ペルソナ毎のセリフを追加してください。ミネラル毎の情報を整理して表示したいです。History, Geological/geographical origin, cultural meanings and usages に分けて、項目ごとに見せたいです。 
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">*Discover the historical and cultural meaning of your Crystal Twin*
+
+(if: $mineral is "Pyrite")[*Pyrite, known as "Fool's Gold" during historic gold rushes due to its resemblance to real gold, has been valued since ancient times for practical uses like fire-starting in flintlocks and creating mirrors, while also serving as a protective charm. Culturally, it symbolizes prosperity, confidence, and the manifestation of one's goals. Today, pyrite finds practical applications in sulfur production for sulfuric acid manufacturing, semiconductor industry processes, and as decorative mineral specimens*]
+(else-if: $mineral is "Turquoise")[*Turquoise forms in arid, oxidized environments, often in the weathered zones of copper deposits. 
+It results from the chemical reaction of copper, aluminum, and phosphorus with water over long periods, often in volcanic or sedimentary rocks.
+.*]
+(else-if: $mineral is "Amethyst")[*Turquoise has been considered sacred by Native Americans, Egyptians, and Persians, who used it in burial masks, ceremonial objects, and amulets. It symbolizes communication, healing, and protection during travel. Today, turquoise is utilized in jewelry, decorative inlays, and traditional medicine practices in some cultures.*]
+</div></div>
+
+"wow, i didn't know that"
+[[Find out about other minerals -> Other Minerals]]
+[[Continue -> Crystal Mini Quiz]]
+
+----------
+<Other minerals>
+★他のMineralも見れるように、リンクを押したらModalが出てくるにはどうしたらいいか、教えてください
+<!--create a modal for 3 minerals-->
+
+----------
+<Crystal Mini Quiz>
+★画面表示の文章、もうすこし工夫できないでしょうか。各ペルソナのセリフを追加してください。
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*Now, do you want to test your knowledge? Play two truths and a lie*
+</div></div>
+
+"Let's see"
+
+(if: $mineral is "Pyrite")[
+  [[Try the quiz-> Quiz Pyrite]]
+]
+(if: $mineral is "Amethyst")[
+  [[Try the quiz-> Quiz Amethyst]]
+]
+(if: $mineral is "Turquoise")[
+  [[Try the quiz-> Quiz Turquoise]]
+]
+
+----------
+<Quiz Pyrite>
+★クイズの内容は変えないでください。ペルソナGiuliaのセリフを追加してください（考えているという内容で）
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">*Two Truths and a Lie — can you spot the made-up history?
+
+Your goal is to identify the lie that is hidden in one of the choices*
+
+
+[[Pyrite is often mistaken for gold because of its shiny, metallic luster. -> Truth]]
+
+[[Pyrite is a major source of real gold in mining operations. -> Lie]]
+
+[[Pyrite can spark when struck against metal or stone. -> Truth]]
+</div></div>
+
+----------
+<Quiz Amethyst>
+★クイズの内容は変えないでください。ペルソナLuciaのセリフを追加してください（考えているという内容で）
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*Two Truths and a Lie — can you spot the made-up history?
+
+Your goal is to identify the lie that is hidden in one of the choices*
+
+
+[[Amethyst gets its purple color from iron impurities and natural radiation. -> Truth]]
+
+[[In ancient times, people believed amethyst could prevent drunkenness.-> Truth]]
+
+[[Amethyst is one of the rarest and most expensive gemstones. -> Lie]]
+</div></div>
+
+----------
+<Quiz Turquoise>
+★クイズの内容は変えないでください。ペルソナThomasのセリフを追加してください（考えているという内容で）
+*Two Truths and a Lie — can you spot the made-up history?
+
+Your goal is to identify the lie that is hidden in one of the choices*
+
+[[Turquoise is an opaque gemstone that often has a blue-to-green hue. -> Truth]]
+
+[[Turquoise was prized by ancient civilizations like the Egyptians and Native Americans. -> Truth]]
+
+[[Turquoise forms in volcanic environments under intense pressure and heat. -> Lie]]
+
+----------
+<Lie>
+★このPassageは変更なしでOK
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+✅ Well spotted! That was the lie.
+Minerals hold fascinating stories — but not *everything* you hear is true.  
+Good instincts, {$persona}.
+</div></div>
+[[Continue your journey -> Crystal Journey Ending]]
+
+----------
+<Truth>
+★ペルソナ毎のセリフを最後に追加してください。
+The screen flashes gently and then displays:
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+*❌ That one’s actually true!*
+
+*Even the most unlikely mineral facts can surprise us.*  
+*Sometimes, truth really is stranger than fiction.*
+</div></div>
+
+(link: "Retake the quiz")[
+  (goto: (history:)'s last)
+]
+
+
+[[Continue your journey -> Crystal Journey Ending]]
+
+----------
+<Crystal Journey Ending>
+★ペルソナ毎のセリフを追加してください。画面内のナラティブも少し工夫してください
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">*You’ve followed your mineral through myths and memory. 
+
+Now, it’s time to look inward.*
+</div></div>
+[[Step into the Reflection Core -> Crystal Reflection]]
+[[Explore freely instead -> Collections]]
+
+----------
+<Crystal Reflection>
+★ペルソナ毎のセリフを追加してください。
+<div class="kiosk-wrapper"><div class="kiosk-frame">*Time has shaped you, too. Like your crystal, you are rare, layered, and luminous.
+
+Are you ready to discover your new self?*
+</div></div>
+
+[[Start -> Augmented Mirror]]
+
+----------
+<Augmented Mirror>
+★ナレーションを追加してください。（内容→キオスクの画面内に、鏡のように自分の姿が映し出されている。自分の鉱物の品を身にまとっている様子がARで出てくる）
+ペルソナ毎のセリフを場面と鉱物にあうように直してください
+
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">**Your crystal reflects your essence.**  
+ Vibrant, thoughtful, grounded, curious, kind — it's all there.  
+
+📸 *Tap to take your Crystal Portrait.*
+</div></div>
+
+(if: $persona is "giulia")[
+Giulia giggles as the mirror shimmers to life.  
+The (lowercase: $mineral)is floating around her.
+A burst of violet and blue overlays her reflection — playful, bright, and a little chaotic.  
+She tilts her head. “This is actually pretty cool…”
+
+]
+(else-if: $persona is "thomas")[
+Thomas studies his reflection, now layered with earthy amber crystals.  
+It’s calm, grounded — something solid in the haze of his busy life.  
+He lets out a breath. “Didn’t expect this to feel… personal.”
+
+]
+(else-if: $persona is "lucia")[
+Lucia sees herself framed in soft, pearlescent hues.  
+The overlay is gentle — graceful lines that echo a life of stories and quiet strength.  
+She nods to her reflection. “How lovely…”
+
+]
+
+[[📸 Take Crystal Portrait -> SavePhoto]]
+[[Skip the photo -> Mineral Memories]]
+
+----------
+<Save Photo>
+★ナレーション（1文目）を自然に変えてください。ここでは各ペルソナ毎の写真イメージを挿入します
+
+You tap the screen. A soft shimmer, then *click* — your photo is taken.
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+✅ *Your Crystal Portrait has been saved.*  
+> You can download it below.
+
+⬇️ [**Download your portrait**](your-crystal-portrait.jpg)  
+*(Note: Replace with actual photo logic if implemented)*
+</div></div>
+[[Continue your journey -> Mineral Memories]]
+
+----------
+<Mineral Memories>
+★画面外、画面内両方のナレーションを追加してください。参加記念持ち帰り用にCertificateが発行されます。
+★ペルソナ毎のセリフを場面に合うように必要に応じて変更してください
+
+<div class="kiosk-wrapper"><div class="kiosk-frame">
+ 🪪 **Crystal ID Card Issued**  
+ Name: (print: $name)  
+ Mineral Twin: (print: $mineral)  
+ [🔗 View your experience archive](https://example.com/users/$(print: $name))  
+ *(link will vary depending on implementation)*
+
+
+ *“Your journey through the Mineral Realms is now part of you.  
+May your inner crystal always shine.”*
+</div></div>
+(if: $persona is "giulia")[
+Giulia picks up the card with a proud grin.  
+“Okay, that was actually super cool,” she says, snapping a photo to post later.
+]
+
+(else-if: $persona is "thomas")[
+Thomas holds the card and pauses for a moment.  
+A rare smile creeps onto his face.  
+“Maybe I needed this more than I thought.”
+]
+
+(else-if: $persona is "lucia")[
+Lucia examines the card delicately, as if it were a rare book.  
+She places it in her purse.  
+“A lovely memory to take home,” she whispers.
+]
+
+
+[[Exit museum -> Ending]]
+
+----------
+<Ending>
+★ナレーションを必要に応じて自然にしてください。ペルソナ毎のセリフを追加してください（感想的な）
+As {$persona} steps outside the *Museo di Mineralogia Luigi Bombicci*,  
+the world feels just a little more alive.
+
+Stones may not speak in words,  
+but today, one spoke just to you.
+
+*Thank you for visiting.  
+Your story is now part of ours.*  
+🪨✨
+
+[[Start Over -> Start: Select Persona]]
