@@ -11,11 +11,23 @@
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Stone Seeker User Scenario.</tw-noscript></noscript></tw-story>
 <tw-storydata name="Stone Seeker User Scenario" startnode="24" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="F770E42B-9723-4973-A76E-3FDC1CD6D9DB" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Cinzel');
 
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
 
 /* default background */
 tw-story {
   background-image: none;
   background-color: black; 
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 /* specify background images with associated tags */
@@ -70,7 +82,7 @@ tw-passage[tags~="collections"] {
   padding: 1.5em;
   border-radius: 0em;
   width: 90%;
-  max-width: 1500px;
+  max-width: 90%;
   min-width: 400px; /* ← for smaller screens */
   margin: 0 auto;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0);
