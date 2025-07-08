@@ -46145,14 +46145,12 @@ a.u-link.u-text-hover-color-var:hover {
 }
 @media (max-width: 575px) {
   .u-header .u-image-1 {
-    width: 64px;
-    margin-top: 40px;
-    margin-left: -19px;
+    margin-top: 24px;
+    margin-left: 0;
   }
 
   .u-header .u-menu-1 {
-    margin-top: -48px;
-    margin-bottom: 24px;
+    margin-top: -32px;
   }
 }
  .u-footer {
