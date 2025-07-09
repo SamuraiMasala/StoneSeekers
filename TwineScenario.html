@@ -83,7 +83,7 @@ tw-passage[tags~="collections"] {
   border-radius: 0em;
   width: 90%;
   max-width: 90%;
-  min-width: 400px; /* ← for smaller screens */
+  min-width: 300px; /* ← for smaller screens */
   margin: 0 auto;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0);
   color: #333333;
@@ -96,7 +96,7 @@ tw-passage {
   border-radius: 0em;
   width: 80%;
   max-width: 800px;
-  min-width: 400px; /* ← for smaller screens  */
+  min-width: unset; /* ← for smaller screens  */
   margin: 0 auto;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0);
   color: #333333;
@@ -158,6 +158,8 @@ tw-passage {
   margin-right: auto;
   max-height: 500px;
   min-height: 450px;
+  width: 90%;
+  max-width: 400px;
   background: url("https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/stoneseeker.jpg");
   background-size: cover;
   border: 8px solid #333;
@@ -246,7 +248,7 @@ tw-passage {
   background: white;
   display: block;   
   z-index: 1000 ;
-　position: fixed;
+  position: fixed;
   left:50%;
   top:50%;
   transform:translateX(-50%)translateY(-70%);
@@ -272,9 +274,23 @@ tw-passage {
 
 @media screen and (max-width: 600px) {
   tw-passage {
-    width: 100%;
+    width: 95%; /* 幅を広げる */
     padding: 1em;
-    font-size: 1rem; /* 文字サイズを小さめに調整 */
+    font-size: 1rem;
+    min-width: unset; /* min-widthを無効化 */
+  }
+  
+  tw-passage[tags~="collections"] {
+    width: 95%;
+    padding: 1em;
+    min-width: unset; /* min-widthを無効化 */
+  }
+  
+  tw-story[tags~="start"],
+  tw-story[tags~="entrance"],
+  tw-story[tags~="inside"],
+  tw-story[tags~="collections"] {
+    padding: 1em; /* パディングを減らす */
   }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name=" Amethyst" tags="inside" position="1350,1225" size="100,100">Passage Text
 (set: $persona to &quot;Giulia&quot;)(set: $mineral to &quot;Pyrite&quot;)&lt;!--delete this afterwards--&gt;
@@ -732,9 +748,7 @@ Which vibe resonates with you most?*
 &lt;div style=&quot;text-align: center;&quot;&gt;
 &lt;img src=&quot;https://raw.githubusercontent.com/SamuraiMasala/StoneSeekers/refs/heads/main/img/museum turquoise.jpg&quot; style=&quot;max-width: 450px;&quot;&gt;&lt;/div&gt;]
 
-[[Go back to the experience -&gt; Crystal Journey Opening]]</tw-passagedata><tw-passagedata pid="33" name="Untitled Passage" tags="" position="1575,425" size="100,100">[[次へ-&gt;Second]]
-</tw-passagedata><tw-passagedata pid="34" name="Second" tags="" position="1575,550" size="100,100">これは2つ目のパッセージです。
-</tw-passagedata><tw-passagedata pid="35" name=" Kiosk ending" tags="inside" position="1750,1075" size="100,100">
+[[Go back to the experience -&gt; Crystal Journey Opening]]</tw-passagedata><tw-passagedata pid="33" name=" Kiosk ending" tags="inside" position="1750,1075" size="100,100">
 As the final part of the journey comes to a close, the screen gently fades to black before displaying a soft message:
 
 &lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;&lt;div class=&quot;kiosk-content&quot;&gt;{$persona}
