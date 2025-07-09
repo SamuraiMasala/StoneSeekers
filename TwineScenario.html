@@ -446,7 +446,8 @@ Like the minerals deep in Earth, you too have been shaped by time, pressure, and
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 (if: $persona is &quot;Giulia&quot;)[*&quot;Okay, this is getting deep&quot;* Giulia thinks, but she&#39;s intrigued. *&quot;I&#39;m curious what they mean by seeing myself reflected.&quot;*](else-if: $persona is &quot;Thomas&quot;)[*&quot;A journey inward...I think that&#39;s exactly what I came here looking for,&quot;* Thomas reflects, feeling ready for whatever comes next.](else-if: $persona is &quot;Lucia&quot;)[*&quot;Oh, what could that mean?&quot;* Lucia wonders. *&quot;Well I do appreciate experiences that encourage self-reflection.&quot;*]
 
-[[Continue-&gt; Augmented Mirror]]</tw-passagedata><tw-passagedata pid="10" name=" Crystal Twin" tags="inside" position="500,1350" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;&lt;div class=&quot;kiosk-content&quot;&gt; 
+[[Continue-&gt; Augmented Mirror]]</tw-passagedata><tw-passagedata pid="10" name=" Crystal Twin" tags="inside" position="500,1350" size="100,100">
+&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;&lt;div class=&quot;kiosk-content&quot;&gt; 
 CONGRATULATIONS {$persona}
 YOUR CRYSTAL TWIN IS 
 &lt;h3&gt;{$mineral}&lt;/h3&gt;(if: $mineral is &quot;Pyrite&quot;)[
@@ -458,7 +459,7 @@ YOUR CRYSTAL TWIN IS
 *Intuitive, philosophical, seeks deeper meaning, creative, values wisdom over material wealth*]
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 
-(if: $persona is &quot;Giulia&quot;)[*&quot;Pyrite - I like the sound of that!&quot;* Giulia grins, reading the description. *&quot;Ambitious and confident? Yeah, that&#39;s totally me.&quot;* ](else-if: $persona is &quot;Thomas&quot;)[Thomas reads the description with a growing smile. *&quot;Turquoise... peaceful and balanced. That&#39;s exactly what I&#39;ve been trying to find lately.&quot;* The description feels surprisingly accurate.](else-if: $persona is &quot;Lucia&quot;)[Lucia nods approvingly as she reads about Amethyst. *&quot;Seeking deeper meaning and valuing wisdom - that does sound like my approach to life&quot;* she thinks warmly.]
+(if: $persona is &quot;Giulia&quot;)[*&quot;Pyrite - I like the sound of that!&quot;* Giulia grins, reading the description. *&quot;Ambitious and confident? Yeah, that&#39;s totally me.&quot;* ](else-if: $persona is &quot;Thomas&quot;)[Thomas reads the description with a growing smile. *&quot;Turquoise... peaceful and balanced. That&#39;s exactly what I&#39;ve been trying to find lately.&quot;* The description feels surprisingly accurate.](else-if: $persona is &quot;Lucia&quot;)[*&quot;Amethyst! I love it&quot;* she grins approvingly as she reads on. *&quot;Seeking deeper meaning and valuing wisdom - that does sound like my approach to life&quot;* she thinks warmly.]
 
 [[Continue -&gt; Crystal Twin Ending]]</tw-passagedata><tw-passagedata pid="11" name=" Crystal Twin Ending" tags="inside" position="500,1500" size="100,100">&lt;div class=&quot;kiosk-wrapper&quot;&gt;&lt;div class=&quot;kiosk-frame&quot;&gt;&lt;div class=&quot;kiosk-content&quot;&gt;Now that you&#39;ve discovered your Crystal Twin, you can:
 
@@ -763,9 +764,7 @@ You may now return to the front counter to receive your personalized experience 
   &lt;p&gt;You will now take a short personality test that will reveal your mineral identity.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 
 (if: $persona is &quot;Giulia&quot;)[She is definitely intrigued now.]
-(else-if: $persona is &quot;Thomas&quot;)[
-A small smile crosses his face — this feels like exactly the kind of break he needed.]
-(else-if: $persona is &quot;Lucia&quot;)[She nods quietly to herself, curious about what the journey will reveal.]
+(else-if: $persona is &quot;Thomas&quot;)[A small smile crosses his face — this feels like exactly the kind of break he needed.](else-if: $persona is &quot;Lucia&quot;)[She nods quietly to herself, curious about what the journey will reveal.]
 [[Continue to take the personality test -&gt;Personality Test1]]</tw-passagedata><tw-passagedata pid="35" name=" 1st Kiosk Interaction" tags="inside" position="500,775" size="100,100">
 {$persona} stands in front of the kiosk screen, and watches as a message appears.
 
